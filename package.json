@@ -1,0 +1,19 @@
+{
+  "name": "lnkc-v2",
+  "version": "1.0.0",
+  "description": "lnkc - an easy to use url shortner",
+  "main": "index.js",
+  "author": "Kaveen Hyacinth (kaveenhyacinth)",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.12"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}
