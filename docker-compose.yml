@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  nginx:
+    container_name: lnkc-v2-nginx-dev
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: "./nginx"
+    ports:
+      - "3050:80"
+  client:
+    container_name: lnkc-v2-client-dev
+    stdin_open: true
+    build:
+      context: ./packages/client
+      dockerfile: Dockerfile.dev
+    restart: always
+    env_file:
+      - "./packages/client/.env"
+    volumes:
+      - "./packages/client:/app"
+      - /app/node_modules
+  api:
+    container_name: lnkc-v2-api-dev
+    build:
+      context: ./packages/api
+      dockerfile: Dockerfile.dev
+    restart: always
+    env_file:
+      - "./packages/api/.env"
+    volumes:
+      - ./packages/api:/app
+      - "./scripts/wait.sh:/wait.sh"
+      - /app/node_modules

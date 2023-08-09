@@ -5,11 +5,12 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy: {
-      "/apx/v1": {
-        target: "http://localhost:8080", // Local Nest Server
-        changeOrigin: true,
-      },
-    },
+    port: 3000,
+    // proxy: {
+    //   "/apx/v1": {
+    //     target: "http://localhost:8080", // Local Nest Server
+    //     changeOrigin: true,
+    //   },
+    // },
   },
 });
